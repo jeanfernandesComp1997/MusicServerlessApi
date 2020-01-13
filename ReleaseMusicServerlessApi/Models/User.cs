@@ -21,5 +21,11 @@ namespace ReleaseMusicServerlessApi.Models
             this.Email = email;
             this.Password = password;
         }
+
+        public User(ObjectId id, string email)
+        {
+            this.Id = id;
+            this.Email = email;
+        }
     }
 }

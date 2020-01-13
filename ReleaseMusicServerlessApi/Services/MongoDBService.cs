@@ -23,7 +23,7 @@ namespace ReleaseMusicServerlessApi.Services
         {
             try
             {
-                this.collection.InsertOne(entity);
+                this.collection.InsertOneAsync(entity);
             }
             catch (Exception ex)
             {
@@ -31,11 +31,20 @@ namespace ReleaseMusicServerlessApi.Services
             }
         }
 
-        public List<TEntity> ListByFilter(Expression<Func<TEntity, bool>> filter)
+        public IList<TEntity> ListByFilter(Expression<Func<TEntity, bool>> filter)
         {
-            dynamic items = this.collection.Find(filter).ToList();
+            try
+            {
+                IList<TEntity> items = this.collection.FindAsync(filter).Result.ToList();
 
-            return items;
+                return items;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
     }
 }

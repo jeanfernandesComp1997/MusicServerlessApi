@@ -8,13 +8,7 @@ namespace ReleaseMusicServerlessApi.Helpers
 {
     public static class CryptHelper
     {
-        #region Atributos
-
         private static string encryptionKey = Credentials.encryptionKey;
-
-        #endregion
-
-        #region Private methods
 
         private static string Encrypt(string text)
         {
@@ -58,8 +52,6 @@ namespace ReleaseMusicServerlessApi.Helpers
             }
             return cipherText;
         }
-
-        #endregion
 
         public static string ToCrypt(this string value)
         {
